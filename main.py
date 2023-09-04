@@ -121,7 +121,7 @@ def edit_order(C):
     """
 
     if len(C) == 0:
-        print("explain")
+        print("You do not currently have any data entered within your order, please order before editing your order.")
         return None
 
 
