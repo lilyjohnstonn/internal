@@ -110,6 +110,12 @@ Layout styles
 	padding: 1em 1.25em;
 }
 
+video{
+max-width:60%;
+display: block;
+margin:auto;
+}
+
 /* -----------------------
 Nav
 ------------------------*/

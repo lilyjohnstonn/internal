@@ -16,7 +16,7 @@ def get_integer(m, a=0, b=5):
         except ValueError:
             print("Please enter a positive integer")
             continue
-        # message to be presented to the user if an integer is entered that is outside the minimum and maximum length parameters
+        # message to be presented to the user if an \integer is entered that is outside the minimum and maximum length parameters
         if my_integer < a or my_integer > b:
             print("You have not entered a valid value")
         else:
