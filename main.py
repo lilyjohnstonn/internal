@@ -1,3 +1,4 @@
+# function is used whenever program needs an index number or integer of one character length
 def get_integer(m, a=0, b=5):
     """Get integer from user
 
@@ -9,16 +10,21 @@ def get_integer(m, a=0, b=5):
     getting_integer = True
     while getting_integer is True:
         try:
+            # code used for program to call on the getting_integer function
             my_integer = int(input(m))
+        # message to be presented to the user if input entered is not an integer or a negative integer
         except ValueError:
             print("Please enter a positive integer")
             continue
+        # message to be presented to the user if an integer is entered that is outside the minimum and maximum length parameters
         if my_integer < a or my_integer > b:
             print("You have not entered a valid value")
         else:
+            # program is to return the accepted entered integer
             return my_integer
 
 
+# function is used whenever a less than 50 character long input is asked of by the user
 def get_string(m, a=1, b=50):
     """Get a string from the user.
 
@@ -29,13 +35,17 @@ def get_string(m, a=1, b=50):
     """
     getting_string = True
     while getting_string is True:
+        # code used for program to call on the getting_string function
         my_string = input(m)
+        # message to be presented to the user if a message is entered that is outside the minimum and maximum length parameters
         if len(my_string) < a or len(my_string) > b:
             print("You have entered too many characters, please try again.")
         else:
+            # program is to return the accepted entered string
             return my_string
 
 
+# function is used whenever a yes or no input is asked for
 def get_short_entry(m, L=('yes', 'no')):
     """
 
@@ -45,14 +55,17 @@ def get_short_entry(m, L=('yes', 'no')):
     """
     yn = True
     while yn:
+        # code used for program to call on the get_short_entry function
         my_string = input(m).lower()
+        # message to be presented to the user if an input other than yes or no is entered
         if my_string not in L:
             print("Please enter " + " or ".join(L).upper())
         else:
+            # program is to return the accepted entered string
             return my_string.title()
 
 
-# function to get the user phone number
+# function is used to get the user phone number
 def get_phone_number(m, a=8, b=12):
     """
 
@@ -64,33 +77,41 @@ def get_phone_number(m, a=8, b=12):
     getting_phone = True
     while getting_phone is True:
         try:
+            # code used for program to call on the getting_phone function
             my_phone = (input(m))
+        # message to be presented to the user if an input that is invalid or negative is entered, program will then continue
         except ValueError:
             print("Please enter a different number")
             continue
+        # message to be presented to the user if an input containing characters other than numbers is entered, program will then continue
         if not my_phone.isdigit():
             print("Please only enter numbers")
             continue
+        # message to be presented to the user if a phone number is entered that is outside the minimum and maximum length parameters
         if len(my_phone) < a or len(my_phone) > b:
             print("You have not entered a valid value")
         else:
+            # program is to return the accepted entered phone number
             return my_phone
 
 
-# printing the sandwich menu
+# function to print the sandwich menu
 def print_sandwiches(L):
     """
 
     :param L:
     :return: None
     """
+    # programing is calling on sandwich list to print the menu when the function is called upon
     for i in range(0, len(L)):
+        # formatted as index number, name, dietary requirement, price
         output = "{:<3}: {:74} --- {:10} --- {:<4}".format(i, L[i][0], L[i][1], L[i][2])
+        # sandwich menu is then printed and formatted using lines to divide code into sections
         print(output)
         print("-" * 150)
 
 
-# ordering sandwiches off the menu
+# function to order sandwiches off the menu
 def add_sandwich(L, C):
     """
 
@@ -98,32 +119,40 @@ def add_sandwich(L, C):
     :param C: list (Customer order list)
     :return: None
     """
+    # users ordered is printed to show them editing options
     print_sandwiches(L)
+    # user is asked which sandwich they would like to add, validated by the length of the sandwich order
     order_index = get_integer("Please enter the index number of the Sandwich you would like to order-> ", 0, len(L) - 1)
+    # variables are identified
     name = L[order_index][0]
     dietary = L[order_index][1]
     price = L[order_index][2]
+    # user is asked how many sandwiches they would like to add
     message = "How many {} sandwiches would you like to order? (max is 5) -> ".format(name)
+    # addition is validated by the get integer function
     order_amount = get_integer(message, 0, 5)
+    # overall price is calculated with amount of sandwiches
     overall_price = price * order_amount
+    # amount of sandwiches is added to the order, it is formatted to break up large chunks of code
     user_order = [order_amount, name, dietary, price, overall_price]
     C.append(user_order)
     print("-" * 150)
     return None
 
 
-# edit sandwiches that the user has ordered
+# function to edit the amount of sandwiches that the user has ordered
 def edit_order(C):
     """
 
     :param C: list (Customer order list)
     :return: None
     """
-
+    # preventative code used to disable the user from using the edit order function if they do not have any sandwiches already within the order
     if len(C) == 0:
         print("You do not currently have any data entered within your order, please order before editing your order.")
         return None
 
+    # printing the current order, formatted with the index number, amount ordered, name, dietary requirement, price, and total price
     for i in range(0, len(C)):
         output = "{:<3}: {:<3}: {:74} --- {:10} --- {:<4} --- {:<4.2f}".format(i,
                                                                                C[i][0],
@@ -131,27 +160,33 @@ def edit_order(C):
                                                                                C[i][2],
                                                                                C[i][3],
                                                                                C[i][4])
+        # current order is printed and formatted using lines to divide code into sections
         print(output)
     print("-" * 150)
 
-    # removal of sandwiches off the order
+    # code begins to remove sandwiches off the order by the index number of desired sandwich to be entered
     order_index = get_integer("Please enter the index number of the Sandwich you would like to remove from your "
                               "order-> ", 0, len(C) - 1)
+    # variables are identified
     order_amount = C[order_index][0]
     name = C[order_index][1]
     price = C[order_index][3]
+    # user is asked how many sandwiches they would like to remove
     message = "How many {} sandwiches would you like to remove? -> ".format(name)
+    # removal is validated by the get integer function
     removal_number = get_integer(message, 0, order_amount)
+    # new number is calculated and new price is created, both are replaced within the order
     new_amount = order_amount - removal_number
     C[order_index][0] = new_amount
     new_price = price * new_amount
     C[order_index][4] = new_price
+    # if sandwiches have been completely removed they will be popped and removed entirely from the order
     if new_amount == 0:
         C.pop(order_index)
     return None
 
 
-# collect customer details
+# function to collect customer details and define delivery method
 def details(D):
     """
 
@@ -166,7 +201,7 @@ def details(D):
         elif detail_correction == "Yes":
             D.clear()
 
-    # available collection options
+    # presenting available collection options that the user can choose from
     collection_options = '''
     P : Pickup
     D : Delivery
@@ -174,7 +209,7 @@ def details(D):
     print(collection_options)
     collection = get_short_entry("Please select your collection option: ", ['p', 'd']).upper()
 
-    # pickup up delivery function
+    # if statement program will run if pickup is chosen
     if collection == "P":
         print("Please enter your customer details below:")
         print("-" * 80)
@@ -186,7 +221,7 @@ def details(D):
         details = [name, phone_number, collection_method, address]
         D.append(details)
 
-    # delivery function
+    # elif statement program will run if delivery is chosen
     elif collection == "D":
         print("Please enter your customer details below:")
         print("-" * 80)
@@ -248,7 +283,8 @@ def finalize_order(C, D):
     :return: None
     """
     if len(C) == 0:
-        print("You do not currently have any data entered within your order, please order before finalizing your order.")
+        print(
+            "You do not currently have any data entered within your order, please order before finalizing your order.")
         return None
 
     if len(D) == 0:
