@@ -235,7 +235,7 @@ def review_order(C, D):
     amount_due = total
     if "Delivery" in range(2, len(D)):
         amount_due += 3
-    print("Total Price - {}".format(amount_due))
+    print("Total Price - {:.2f}".format(amount_due))
     print("-" * 150)
     return None
 
