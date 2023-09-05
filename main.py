@@ -124,7 +124,6 @@ def edit_order(C):
         print("You do not currently have any data entered within your order, please order before editing your order.")
         return None
 
-
     for i in range(0, len(C)):
         output = "{:<3}: {:<3}: {:74} --- {:10} --- {:<4} --- {:<4.2f}".format(i,
                                                                                C[i][0],
@@ -137,7 +136,7 @@ def edit_order(C):
 
     # removal of sandwiches off the order
     order_index = get_integer("Please enter the index number of the Sandwich you would like to remove from your "
-                              "order-> ",0, len(C)-1)
+                              "order-> ", 0, len(C) - 1)
     order_amount = C[order_index][0]
     name = C[order_index][1]
     price = C[order_index][3]
@@ -248,6 +247,15 @@ def finalize_order(C, D):
     :param D: list (Customer details list)
     :return: None
     """
+    if len(C) == 0:
+        print("You do not currently have any data entered within your order, please order before finalizing your order.")
+        return None
+
+    if len(D) == 0:
+        print("You do not currently have any details entered within your order, please enter your details before "
+              "finalizing your order.")
+        return None
+
     print(review_order(C, D))
     confirm_order = get_short_entry("Would you like to confirm your order? (Yes/No) -> ").upper()
     if confirm_order == "YES":

@@ -260,7 +260,7 @@
 	<div class="col-container">
 	<div class="col">
 		<h4>Sprint Board</h4>
-		<img class="img-responsive" src="assets/img/" alt="">
+		<img class="img-responsive" src="assets/img/sprint_six_board.png" alt="">
 	</div>
 	<div class="col">
 		<h4>Sprint Plan</h4>
@@ -272,10 +272,10 @@
 	<h4>Sprint Six Test</h4>
 	<p></p>
 	<div class="col">
-		<img class="img-responsive" src="assets/img/" alt="">
+		<img class="img-responsive" src="assets/img/sprint_six_test_one.png" alt="">
 	</div>
 	<div class="col">
-		<img class="img-responsive" src="assets/img/" alt="">
+		<img class="img-responsive" src="assets/img/sprint_six_test_two.png" alt="">
 	</div>
 	</div>
 
@@ -291,10 +291,10 @@
 
 	<div class="col-container">
 	<div class="col">
-		<p></p>
+		<p>An error I encountered in this version was to do with the program crashing if the user entered an invalid index number. Instead of asking for them to enter a different one because it was invalid it instead crashed. This obviously was an error because they are able to enter and invalid input that then causing the program to crash which is not what we want as this goes against main relevant implication and is an error within the code. To fix this error, I had to make sure the input was validated by disabling the user from entering an index number that was above the length of the customer order list. This meant that now if the user entered an index of 5 when they only have an index of 3, they are asked to re-enter a correct value. </p>
 	</div>
 	<div class="col">
-		<p> </p>
+		<p>Another error that became apparent within my program was surrounding the removal of sandwiches. If a user decided they didn’t actually want to have any sandwiches of a particular type and removed them all, the sandwiches would stay on the order and just say that zero were ordered instead of removing the sandwich entirely from the menu. Although this error is major because it doesn’t crash my program out, it creates problems surrounding user understanding of the program and could create confusion because the sandwich is there even after the user has removed it. This error however was a simple fix because it just needed validating so that if the amount of sandwiches was equal to zero the program would pop the sandwiches, removing them from the order.</p>
 	</div>
 	</div>
 
@@ -309,10 +309,10 @@
 
 	<div class="col-container">
 	<div class="col">
-		<p></p>
+		<p>Editing the order seemed to be the main cause for errors within my program and another error that I encountered was one regarding the function being able to present all sandwiches within the order within the output. This was needed to the user could edit their whole order instead of just the first sandwich that they ordered. This called for the output function to be defined above before being called on and for the indention of it to be corrected to that it wasn’t stints outside the code and could be called upon for use. </p>
 	</div>
 	<div class="col">
-		<p> </p>
+		<p>Another major error that I encountered was within my edit order function. This error in short caused the user to become stuck within the function if they asked to edit their order with no sandwiches ordered prior. If this was done there was no way for the user to go back to the main program which is an obvious problem as it prevents them from being able to use the program. To fix this error I had to make sure that the program had a statement to follow if the length of the order was deemed to be zero. If this happens the program is then able to inform the user that there is nothing ordered, and so they are then able to return to the main options and order sandwiches which then enables them to edit their order once the customer order list has items within it. </p>
 	</div>
 	</div>
 
@@ -324,6 +324,12 @@
 <!-- User testing -->
 <h1>User Testing</h1>
 <hr>
+
+<!-- Git Commit History -->
+<h1>Git Commit History</h1>
+
+<!-- What I would like to do to further my program in the future -->
+<h1>In the Future</h1>
 
 <!-- Relevant Implications -->
 <h1>Relevant Implications</h1>
